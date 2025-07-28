@@ -1,6 +1,8 @@
 import React from 'react'
 import Card from '../components/components/Card'
 import { Globe } from '../components/components/Globe';
+import CopyEmailButton from '../components/components/CopyEmailButton';
+import { Frameworks } from '../components/components/FrameWork';
 
 const About = () => {
   const grid2Container = React.useRef();
@@ -91,9 +93,26 @@ const About = () => {
               </div>
             </div>
             {/* Grid-4*/}
-            <div className='grid-violet-color grid-4'></div>
+            <div className='grid-special-color grid-4'>
+              <div className='flex flex-col items-center justify-center gap-4 size-full'>
+                <p className='text-center headtext'>
+                  Are you Ready to Explore the World with me?
+                  <CopyEmailButton/>
+                </p>
+              </div>
+            </div>
             {/* Grid-5*/}
-            <div className='grid-default-color grid-5'></div>
+            <div className='grid-default-color grid-5'>
+              <div className='z-10 w-[50%] text-2xl'>
+                <p className='headtext'>Tech Stack</p>
+                <p className='subtext h-1 left-0'>I specialize in a variety of <br/>languages, frameworks, and tools that allow me to build robust an d scalable applications</p>
+              <div/>
+                <div className='absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125'>
+                  <Frameworks/>
+                </div>  
+                <div/>
+              </div>
+            </div>
         </div>
     </section>
   )
