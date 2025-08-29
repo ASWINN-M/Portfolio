@@ -1,6 +1,6 @@
 import React from 'react'
 import { FlipWords } from '../FlipWords'
-import {motion} from 'motion/react'
+import {delay, motion} from 'motion/react'
 
 const HeroText = () => {
     const variants = {
@@ -20,23 +20,25 @@ const HeroText = () => {
             >Hi I'm Aswin</motion.h1>
             <div className=''>
                 <motion.p 
-                className='text-5xl font-medium text-neutral-300'
+                className='text-4xl font-medium text-neutral-300'
                 variants={variants}
                 initial = 'hidden'
                 animate = 'visible'
-                transition={{delay : 1.2}}>A Developer <br/>Dedicated to Crafting</motion.p>
+                transition={{delay : 1.2}}>Machine Learning Enthusiast <br/>Dedicated to Explore Tools</motion.p>
                 <motion.div
                 variants={variants}
                 initial = 'hidden'
                 animate = 'visible'
                 transition={{delay : 1.5}}
-                ><FlipWords words = {["Secure" , "Modern" , "Scalable"]} className='font-black text-8xl text-white'/></motion.div>
+                ><FlipWords words = {["Trains" , "Tunes" , "Scales"]} 
+                className='font-black text-8xl text-white'
+                transition = {{delay : 0.5}}/></motion.div>
                 <motion.p className='text-4xl font-medium text-neutral-300'
                 variants={variants}
                 initial = 'hidden'
                 animate = 'visible'
                 transition={{delay : 1.8}}
-                >Web Solutions</motion.p>
+                >The Models</motion.p>
 
             </div>
         </div>
@@ -53,19 +55,19 @@ const HeroText = () => {
                 initial = 'hidden'
                 animate = 'visible'
                 transition={{delay : 1.2}}
-                >Building</motion.p>
+                >Builds</motion.p>
                 <motion.div 
                 variants={variants}
                 initial = 'hidden'
                 animate = 'visible'
                 transition={{delay : 1.5}}
-                ><FlipWords words = {["Secure" , "Modern" , "Scalable"]} className='font-black text-4xl text-neutral-300'/></motion.div>
+                ><FlipWords words = {["Lossless" , "Tuned" , "Scalable"]} className='font-black text-4xl text-neutral-300'/></motion.div>
                 <motion.p className='text-4xl font-black text-neutral-300'
                 variants={variants}
                 initial = 'hidden'
                 animate = 'visible'
                 transition={{delay : 1.8}}
-                >Web Application</motion.p>
+                >ML Model</motion.p>
             </motion.div>
         </div>
     </div>
