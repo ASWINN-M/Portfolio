@@ -4,7 +4,7 @@ import { experiences } from '../../Constant/experiences'
 
 const Experience = () => {
   return (
-    <div className='c-space section-spacing'>
+    <div id='experience' className='c-space section-spacing'>
       <div className="text-center mb-10">
         <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-4">
           My Experience

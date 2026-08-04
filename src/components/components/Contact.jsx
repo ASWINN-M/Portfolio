@@ -1,67 +1,103 @@
-import React, { useState, useEffect, useRef } from 'react';
-import emailjs from '@emailjs/browser';
-import Alert from './Alert';
+import React, { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
+import Alert from "./Alert";
+
+const SERVICE_ID = "service_424dwvn";
+const TEMPLATE_ID = "template_zduuaua";
+const PUBLIC_KEY = "g1pdjeQG_ZZDvef1R";
+const CONTACT_EMAIL = "aswinmmsa@gmail.com";
 
 const Contact = () => {
-  const form = useRef();
-  const [formData, setFormData] = useState({ from_name: '', from_email: '', message: '' });
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
+  const [formData, setFormData] = useState({
+    from_name: "",
+    from_email: "",
+    message: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [alertType, setAlertType] = useState('success');
-  const [alertMessage, setAlertMessage] = useState('');
+  const [alertType, setAlertType] = useState("success");
+  const [alertMessage, setAlertMessage] = useState("");
 
-  // Auto-hide alert after 5 seconds
   useEffect(() => {
-    if (showAlert) {
-      const timer = setTimeout(() => setShowAlert(false), 5000);
-      return () => clearTimeout(timer);
-    }
+    emailjs.init({ publicKey: PUBLIC_KEY });
+  }, []);
+
+  useEffect(() => {
+    if (!showAlert) return;
+    const timer = setTimeout(() => setShowAlert(false), 6000);
+    return () => clearTimeout(timer);
   }, [showAlert]);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const openMailtoFallback = () => {
+    const subject = encodeURIComponent(
+      `Portfolio message from ${formData.from_name || "visitor"}`
+    );
+    const body = encodeURIComponent(
+      `${formData.message}\n\n— ${formData.from_name}\n${formData.from_email}`
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setShowAlert(false);
 
     try {
-      await emailjs.sendForm(
-        'service_x7stire', 
-        'template_fjzu09a', 
-        form.current,
-        'oKjZ9rZlBHpI3FowT' 
-      );
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+        from_name: formData.from_name,
+        from_email: formData.from_email,
+        reply_to: formData.from_email,
+        message: formData.message,
+        to_name: "Aswin",
+      });
 
-      setIsLoading(false);
-      form.current.reset();
-      setFormData({ from_name: '', from_email: '', message: '' });
+      setFormData({ from_name: "", from_email: "", message: "" });
+      setAlertType("success");
+      setAlertMessage("Your message has been sent successfully!");
       setShowAlert(true);
-      setAlertType('success');
-      setAlertMessage('Your message has been sent successfully!');
     } catch (error) {
-      console.error('EmailJS Error:', error);
-      setIsLoading(false);
-      setAlertType('error');
-      setAlertMessage('Failed to send message. Please try again.');
+      console.error("EmailJS Error:", error);
+      const detail =
+        error?.text ||
+        error?.message ||
+        (typeof error === "string" ? error : "Unknown error");
+
+      // Fallback so contact still works if EmailJS dashboard/template blocks
+      openMailtoFallback();
+      setAlertType("warning");
+      setAlertMessage(
+        `Email service failed (${detail}). Opening your email app as a backup.`
+      );
       setShowAlert(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <section className="relative flex items-center c-space section-spacing">
+    <section
+      id="contact"
+      className="relative flex items-center c-space section-spacing"
+    >
       {showAlert && <Alert type={alertType} text={alertMessage} />}
 
       <div className="flex flex-col items-center justify-center max-w-md p-5 mx-auto border border-white/10 rounded-2xl bg-primary">
         <div className="flex flex-col items-start w-full gap-5 mb-10">
           <h2 className="text-heading">Let's Talk</h2>
           <p className="font-normal text-neutral-400">
-            Whether you have a question, a project idea, or just want to say hi, my inbox is always open. I look forward to hearing from you!
+            Looking to collaborate on AI agents, RAG systems, or LLM products?
+            Reach out — I'm open to ideas, collaborations, and opportunities in
+            AI engineering.
           </p>
         </div>
 
-        <form ref={form} className="w-full" onSubmit={handleSubmit}>
-          <div className="flex flex-col items-start w-full gap-5 mb-10">
+        <form className="w-full" onSubmit={handleSubmit}>
+          <div className="mb-5">
             <label htmlFor="name" className="field-label">
               Full Name
             </label>
@@ -112,9 +148,10 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation"
+            disabled={isLoading}
+            className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation disabled:opacity-60"
           >
-            {!isLoading ? 'Send' : 'Sending...'}
+            {!isLoading ? "Send" : "Sending..."}
           </button>
         </form>
       </div>

@@ -1,80 +1,105 @@
-import React from 'react'
-import { FlipWords } from '../FlipWords'
-import {delay, motion} from 'motion/react'
+import React from "react";
+import { FlipWords } from "../FlipWords";
+import { motion } from "motion/react";
 
 const HeroText = () => {
-    const variants = {
-        hidden : {opacity : 0 , x : -50},
-        visible : {opacity : 1 , x : 0}
-    };
+  const variants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
+  };
   return (
-    <div className='z-10 mt-20
-    text-center md:mt-40 md:text-left rounded-3xl bg-clip-text'>
-        <div className='flex-col hidden md:flex c-space'>
-            <motion.h1 
-            className='text-4xl font-medium'
+    <div
+      className="z-10 mt-20
+    text-center md:mt-40 md:text-left rounded-3xl bg-clip-text"
+    >
+      <div className="flex-col hidden md:flex c-space">
+        <motion.h1
+          className="text-4xl font-medium"
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 1 }}
+        >
+          Hi I'm Aswin
+        </motion.h1>
+        <div>
+          <motion.p
+            className="text-4xl font-medium text-neutral-300"
             variants={variants}
-            initial = 'hidden'
-            animate = 'visible'
-            transition={{delay : 1}}
-            >Hi I'm Aswin</motion.h1>
-            <div className=''>
-                <motion.p 
-                className='text-4xl font-medium text-neutral-300'
-                variants={variants}
-                initial = 'hidden'
-                animate = 'visible'
-                transition={{delay : 1.2}}>Machine Learning Enthusiast <br/>Dedicated to Explore Tools</motion.p>
-                <motion.div
-                variants={variants}
-                initial = 'hidden'
-                animate = 'visible'
-                transition={{delay : 1.5}}
-                ><FlipWords words = {["Trains" , "Tunes" , "Scales"]} 
-                className='font-black text-8xl text-white'
-                transition = {{delay : 0.5}}/></motion.div>
-                <motion.p className='text-4xl font-medium text-neutral-300'
-                variants={variants}
-                initial = 'hidden'
-                animate = 'visible'
-                transition={{delay : 1.8}}
-                >The Models</motion.p>
-
-            </div>
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.2 }}
+          >
+            AI Agent Developer
+            <br />
+            Building Intelligent Systems
+          </motion.p>
+          <motion.div
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.5 }}
+          >
+            <FlipWords
+              words={["Agents", "RAG Pipelines", "LLM Apps"]}
+              className="font-black text-8xl text-white"
+            />
+          </motion.div>
+          <motion.p
+            className="text-4xl font-medium text-neutral-300"
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.8 }}
+          >
+            That Ship to Production
+          </motion.p>
         </div>
-        <div className='flex- flex-col space-y-6 md:hidden'>
-            <motion.p className='text-4xl font-medium'
-                variants={variants}
-                initial = 'hidden'
-                animate = 'visible'
-                transition={{delay : 1}}>Hi, I'm Aswin</motion.p>
-            <motion.div>
-                <motion.p 
-                className='text-5xl font-black text-neutral-300'
-                variants={variants}
-                initial = 'hidden'
-                animate = 'visible'
-                transition={{delay : 1.2}}
-                >Builds</motion.p>
-                <motion.div 
-                variants={variants}
-                initial = 'hidden'
-                animate = 'visible'
-                transition={{delay : 1.5}}
-                ><FlipWords words = {["Lossless" , "Tuned" , "Scalable"]} className='font-black text-4xl text-neutral-300'/></motion.div>
-                <motion.p className='text-4xl font-black text-neutral-300'
-                variants={variants}
-                initial = 'hidden'
-                animate = 'visible'
-                transition={{delay : 1.8}}
-                >ML Model</motion.p>
-            </motion.div>
-        </div>
+      </div>
+      <div className="flex- flex-col space-y-6 md:hidden">
+        <motion.p
+          className="text-4xl font-medium"
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 1 }}
+        >
+          Hi, I'm Aswin
+        </motion.p>
+        <motion.div>
+          <motion.p
+            className="text-5xl font-black text-neutral-300"
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.2 }}
+          >
+            Builds
+          </motion.p>
+          <motion.div
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.5 }}
+          >
+            <FlipWords
+              words={["Agents", "RAG", "LLM Tools"]}
+              className="font-black text-4xl text-neutral-300"
+            />
+          </motion.div>
+          <motion.p
+            className="text-4xl font-black text-neutral-300"
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.8 }}
+          >
+            AI Systems
+          </motion.p>
+        </motion.div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default HeroText
-
-
-
+export default HeroText;
