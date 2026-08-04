@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { asset } from "../../utils/asset";
 
 const Project = ({
   title = "Default Project",
   description = "Project description",
   subDescription = [],
   href = "#",
-  image = "/assets/default-project.jpg",
+  image = asset("assets/projects/accessories.jpg"),
   tags = [],
   status = null,
 }) => {

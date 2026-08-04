@@ -1,3 +1,5 @@
+import { asset } from "../utils/asset";
+
 export const myProjects = [
   {
     id: 0,
@@ -12,13 +14,13 @@ export const myProjects = [
     ],
     href: "https://github.com/ASWINN-M/The_Hybrid_Agent",
     logo: "",
-    image: "/assets/projects/game-engine.jpg",
+    image: asset("assets/projects/game-engine.jpg"),
     status: "In Progress",
     tags: [
-      { id: 1, name: "Python", path: "/assets/logos/python-logo-only.png" },
-      { id: 2, name: "LangGraph", path: "/assets/logos/python-logo-only.png" },
-      { id: 3, name: "MCP", path: "/assets/logos/microsoft.svg" },
-      { id: 4, name: "Git", path: "/assets/logos/git.svg" },
+      { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
+      { id: 2, name: "LangGraph", path: asset("assets/logos/python-logo-only.png") },
+      { id: 3, name: "MCP", path: asset("assets/logos/microsoft.svg") },
+      { id: 4, name: "Git", path: asset("assets/logos/git.svg") },
     ],
   },
   {
@@ -34,12 +36,12 @@ export const myProjects = [
     ],
     href: "https://github.com/ASWINN-M/OCR",
     logo: "",
-    image: "/assets/projects/auth-system.jpg",
+    image: asset("assets/projects/auth-system.jpg"),
     tags: [
-      { id: 1, name: "Python", path: "/assets/logos/python-logo-only.png" },
-      { id: 2, name: "JavaScript", path: "/assets/logos/javascript.svg" },
-      { id: 3, name: "React", path: "/assets/logos/react.svg" },
-      { id: 4, name: "Git", path: "/assets/logos/git.svg" },
+      { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
+      { id: 2, name: "JavaScript", path: asset("assets/logos/javascript.svg") },
+      { id: 3, name: "React", path: asset("assets/logos/react.svg") },
+      { id: 4, name: "Git", path: asset("assets/logos/git.svg") },
     ],
   },
   {
@@ -55,12 +57,12 @@ export const myProjects = [
     ],
     href: "https://github.com/ASWINN-M/RAG-2",
     logo: "",
-    image: "/assets/projects/elearning.jpg",
+    image: asset("assets/projects/elearning.jpg"),
     tags: [
-      { id: 1, name: "Python", path: "/assets/logos/python-logo-only.png" },
-      { id: 2, name: "LangChain", path: "/assets/logos/python-logo-only.png" },
-      { id: 3, name: "ChromaDB", path: "/assets/logos/sqlite.svg" },
-      { id: 4, name: "Git", path: "/assets/logos/git.svg" },
+      { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
+      { id: 2, name: "LangChain", path: asset("assets/logos/python-logo-only.png") },
+      { id: 3, name: "ChromaDB", path: asset("assets/logos/sqlite.svg") },
+      { id: 4, name: "Git", path: asset("assets/logos/git.svg") },
     ],
   },
   {
@@ -76,12 +78,12 @@ export const myProjects = [
     ],
     href: "https://github.com/ASWINN-M/EmotionsBasedOnTexts",
     logo: "",
-    image: "/assets/projects/wordpress-theme.jpg",
+    image: asset("assets/projects/wordpress-theme.jpg"),
     tags: [
-      { id: 1, name: "Python", path: "/assets/logos/python-logo-only.png" },
-      { id: 2, name: "XGBoost", path: "/assets/logos/python-logo-only.png" },
-      { id: 3, name: "NLP", path: "/assets/logos/deep-learning.png" },
-      { id: 4, name: "Git", path: "/assets/logos/git.svg" },
+      { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
+      { id: 2, name: "XGBoost", path: asset("assets/logos/python-logo-only.png") },
+      { id: 3, name: "NLP", path: asset("assets/logos/deep-learning.png") },
+      { id: 4, name: "Git", path: asset("assets/logos/git.svg") },
     ],
   },
   {
@@ -97,12 +99,12 @@ export const myProjects = [
     ],
     href: "https://github.com/ASWINN-M/Healthcare-Agent",
     logo: "",
-    image: "/assets/projects/blazor-app.jpg",
+    image: asset("assets/projects/blazor-app.jpg"),
     tags: [
-      { id: 1, name: "Python", path: "/assets/logos/python-logo-only.png" },
-      { id: 2, name: "LangGraph", path: "/assets/logos/python-logo-only.png" },
-      { id: 3, name: "MCP", path: "/assets/logos/microsoft.svg" },
-      { id: 4, name: "Git", path: "/assets/logos/git.svg" },
+      { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
+      { id: 2, name: "LangGraph", path: asset("assets/logos/python-logo-only.png") },
+      { id: 3, name: "MCP", path: asset("assets/logos/microsoft.svg") },
+      { id: 4, name: "Git", path: asset("assets/logos/git.svg") },
     ],
   },
 ];
