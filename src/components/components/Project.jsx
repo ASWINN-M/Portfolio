@@ -121,7 +121,7 @@ const Project = ({
                     ))}
                   </div>
 
-                  {href && href !== "#" && (
+                  {href && href !== "#" ? (
                     <a
                       href={href}
                       target="_blank"
@@ -134,6 +134,14 @@ const Project = ({
                         className="w-4 h-4"
                         alt="external"
                       />
+                    </a>
+                  ) : (
+                    <a
+                      href="#currently-building"
+                      className="flex items-center gap-2 text-aqua transition-colors hover:text-mint"
+                      onClick={() => setIsHidden(false)}
+                    >
+                      See current build notes
                     </a>
                   )}
                 </div>

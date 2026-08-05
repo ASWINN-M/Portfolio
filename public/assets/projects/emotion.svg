@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#140a1f"/>
+      <stop offset="1" stop-color="#2a1538"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect x="150" y="150" width="520" height="280" rx="24" fill="#1f1430" stroke="#ca2f8c" stroke-opacity="0.45"/>
+  <circle cx="260" cy="260" r="42" fill="#ea4884" fill-opacity="0.9"/>
+  <circle cx="360" cy="260" r="42" fill="#7a57db" fill-opacity="0.9"/>
+  <circle cx="460" cy="260" r="42" fill="#33c2cc" fill-opacity="0.9"/>
+  <circle cx="560" cy="260" r="42" fill="#d6995c" fill-opacity="0.9"/>
+  <rect x="210" y="340" width="400" height="14" rx="7" fill="#ffffff" fill-opacity="0.25"/>
+  <rect x="250" y="372" width="320" height="12" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <text x="150" y="520" fill="#ea4884" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600">EMOTION DETECTION</text>
+  <text x="150" y="560" fill="#ffffff" fill-opacity="0.7" font-family="Segoe UI, Arial, sans-serif" font-size="22">Multilingual text ’ emotion + confidence</text>
+</svg>

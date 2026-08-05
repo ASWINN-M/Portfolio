@@ -16,9 +16,9 @@ export const myProjects = [
       "Uses Groq-hosted Llama models with conversation memory and safety guidelines.",
       "Includes Whisper speech-to-text and TTS for a multimodal assistant experience.",
     ],
-    href: "https://github.com/ASWINN-M/The_Hybrid_Agent",
+    href: "",
     logo: "",
-    image: asset("assets/projects/game-engine.jpg"),
+    image: asset("assets/projects/hybrid-agent.svg"),
     status: "In Progress",
     tags: [
       { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
@@ -40,7 +40,7 @@ export const myProjects = [
     ],
     href: "https://github.com/ASWINN-M/OCR",
     logo: "",
-    image: asset("assets/projects/auth-system.jpg"),
+    image: asset("assets/projects/ocr.svg"),
     tags: [
       { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
       { id: 2, name: "JavaScript", path: asset("assets/logos/javascript.svg") },
@@ -61,7 +61,7 @@ export const myProjects = [
     ],
     href: "https://github.com/ASWINN-M/RAG-2",
     logo: "",
-    image: asset("assets/projects/elearning.jpg"),
+    image: asset("assets/projects/rag.svg"),
     tags: [
       { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
       { id: 2, name: "LangChain", path: asset("assets/logos/python-logo-only.png") },
@@ -82,7 +82,7 @@ export const myProjects = [
     ],
     href: "https://github.com/ASWINN-M/EmotionsBasedOnTexts",
     logo: "",
-    image: asset("assets/projects/wordpress-theme.jpg"),
+    image: asset("assets/projects/emotion.svg"),
     tags: [
       { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
       { id: 2, name: "XGBoost", path: asset("assets/logos/python-logo-only.png") },
@@ -103,7 +103,7 @@ export const myProjects = [
     ],
     href: "https://github.com/ASWINN-M/Healthcare-Agent",
     logo: "",
-    image: asset("assets/projects/blazor-app.jpg"),
+    image: asset("assets/projects/healthcare.svg"),
     tags: [
       { id: 1, name: "Python", path: asset("assets/logos/python-logo-only.png") },
       { id: 2, name: "LangGraph", path: asset("assets/logos/python-logo-only.png") },

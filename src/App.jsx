@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
+import CurrentlyBuilding from "./sections/CurrentlyBuilding";
 import Projects from "./sections/projects";
 import ProjectDetails from "./sections/ProjectDetails";
 import Experience from "./components/components/Experience";
@@ -13,6 +14,7 @@ const App = () => {
       <Navbar />
       <Hero />
       <About />
+      <CurrentlyBuilding />
       <Projects />
       <ProjectDetails />
       <Experience />
