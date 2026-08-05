@@ -90,9 +90,9 @@ const Contact = () => {
         <div className="flex flex-col items-start w-full gap-5 mb-10">
           <h2 className="text-heading">Let's Talk</h2>
           <p className="font-normal text-neutral-400">
-            Looking to collaborate on AI agents, RAG systems, or LLM products?
-            Reach out — I'm open to ideas, collaborations, and opportunities in
-            AI engineering.
+            Got a project idea, a question, or just want to say hi? Drop a
+            message — I'm always up for chatting about AI agents, RAG, or ML
+            work.
           </p>
         </div>
 

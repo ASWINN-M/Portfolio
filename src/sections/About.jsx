@@ -9,7 +9,6 @@ const About = () => {
     <section id="about" className="c-space section-spacing">
       <h2 className="text-heading">About Me</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
-        {/* Grid-1*/}
         <div className="flex items-end grid-default-color grid-1">
           <img
             src="assets/coding-pov.png"
@@ -18,18 +17,17 @@ const About = () => {
           />
           <div className="z-10">
             <p className="headtext text-2xl md:text-4xl text-shadow-black">
-              Hi I'm Aswin
+              Hi, I'm Aswin
             </p>
             <p className="text-sm md:text-base subtext">
-              I'm an AI Agent Developer and AI Engineer focused on building
-              production-ready agent systems, RAG pipelines, and LLM
-              applications. I work across NLP, OCR, and tool-calling agents —
-              and I'm currently building The Hybrid Agent.
+              I work on AI agents and practical ML — things like RAG, OCR, and
+              tools that can take real actions. Right now I'm building The Hybrid
+              Agent, and I enjoy turning research ideas into projects you can
+              actually run.
             </p>
             <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo"></div>
           </div>
         </div>
-        {/* Grid-2*/}
         <div className="grid-default-color grid-2">
           <div
             ref={grid2Container}
@@ -37,51 +35,48 @@ const About = () => {
           >
             <div className="p-6 text-left bg-black/15 border border-white/7 rounded-lg shadow-lg">
               <p className="text-2xl font-semibold mb-2 text-white">
-                Focus Areas
+                What I've been learning
               </p>
               <ol className="list-decimal pl-5 space-y-2 text-white">
                 <li>
-                  Machine Learning by <b>DeepLearning.AI</b>
+                  Machine Learning with <b>DeepLearning.AI</b>
                 </li>
-                <li>LangChain, LangGraph & AI Agent workflows</li>
+                <li>LangChain, LangGraph, and building AI agents</li>
                 <li>
-                  Python from <b>University of Michigan</b> (Coursera)
+                  Python from the <b>University of Michigan</b> (Coursera)
                 </li>
                 <li>
-                  Scikit-Learn & applied ML from <b>freeCodeCamp</b>
+                  Scikit-Learn & applied ML on <b>freeCodeCamp</b>
                 </li>
               </ol>
             </div>
           </div>
         </div>
-        {/* Grid-3*/}
         <div className="grid-black-color grid-3">
           <div className="z-10 w-[50%]">
-            <p className="headtext">Time Zone</p>
+            <p className="headtext">Where I am</p>
             <p className="subtext">
-              Based in India — open to remote AI engineering roles worldwide
+              I'm based in India and happy to work remotely with teams anywhere.
             </p>
             <figure className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
               <Globe />
             </figure>
           </div>
         </div>
-        {/* Grid-4*/}
         <div className="grid-special-color grid-4">
           <div className="flex flex-col items-center justify-center gap-4 size-full">
             <p className="text-center headtext">
-              Building AI agents that actually get work done?
+              Want to build something with AI together?
             </p>
             <CopyEmailButton />
           </div>
         </div>
-        {/* Grid-5*/}
         <div className="grid-default-color grid-5">
           <div className="z-10 w-[50%]">
-            <p className="headtext">AI Tech Stack</p>
+            <p className="headtext">Tools I use</p>
             <p className="subtext">
-              Tools I use to design agents, retrieval systems, and LLM-powered
-              products end to end
+              A mix of Python, ML libraries, and web tools I use to ship agents
+              and AI apps.
             </p>
           </div>
           <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">

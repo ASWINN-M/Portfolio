@@ -20,7 +20,7 @@ const HeroText = () => {
           animate="visible"
           transition={{ delay: 1 }}
         >
-          Hi I'm Aswin
+          Hi, I'm Aswin
         </motion.h1>
         <div>
           <motion.p
@@ -32,7 +32,7 @@ const HeroText = () => {
           >
             AI Agent Developer
             <br />
-            Building Intelligent Systems
+            I build tools that think and act
           </motion.p>
           <motion.div
             variants={variants}
@@ -41,7 +41,7 @@ const HeroText = () => {
             transition={{ delay: 1.5 }}
           >
             <FlipWords
-              words={["Agents", "RAG Pipelines", "LLM Apps"]}
+              words={["Agents", "RAG apps", "LLM tools"]}
               className="font-black text-8xl text-white"
             />
           </motion.div>
@@ -52,7 +52,7 @@ const HeroText = () => {
             animate="visible"
             transition={{ delay: 1.8 }}
           >
-            That Ship to Production
+            that people can actually use
           </motion.p>
         </div>
       </div>
@@ -74,7 +74,7 @@ const HeroText = () => {
             animate="visible"
             transition={{ delay: 1.2 }}
           >
-            Builds
+            I build
           </motion.p>
           <motion.div
             variants={variants}
@@ -83,7 +83,7 @@ const HeroText = () => {
             transition={{ delay: 1.5 }}
           >
             <FlipWords
-              words={["Agents", "RAG", "LLM Tools"]}
+              words={["Agents", "RAG apps", "LLM tools"]}
               className="font-black text-4xl text-neutral-300"
             />
           </motion.div>
@@ -94,7 +94,7 @@ const HeroText = () => {
             animate="visible"
             transition={{ delay: 1.8 }}
           >
-            AI Systems
+            with AI
           </motion.p>
         </motion.div>
       </div>

@@ -1,17 +1,68 @@
+# Aswin — Portfolio
 
-# Aswin.portfolio.in
-Welcome to my portfolio project.
-This is my personal portfolio.
-# React + Vite
+Personal portfolio site for **Aswin** — AI Agent Developer / AI Engineer.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live site:** [https://ASWINN-M.github.io/Portfolio/](https://ASWINN-M.github.io/Portfolio/)
 
-Currently, two official plugins are available:
+## What's on the site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Hero intro with AI-focused branding
+- About section (focus areas, location, tech stack)
+- Selected projects with links to GitHub
+- Project details section (problem → approach → outcome)
+- Experience timeline (AI Engineering, ML Engineering, AI Agent Developer)
+- Contact form (EmailJS) + resume download in the navbar
 
-## Expanding the ESLint configuration
+## Featured projects
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Project | Repo |
+| --- | --- |
+| The Hybrid Agent *(in progress)* | Private |
+| Multilingual OCR & Translation | [OCR](https://github.com/ASWINN-M/OCR) |
+| RAG Document Intelligence | [RAG-2](https://github.com/ASWINN-M/RAG-2) |
+| Emotion Detection from Text | [EmotionsBasedOnTexts](https://github.com/ASWINN-M/EmotionsBasedOnTexts) |
+| Healthcare AI Agent | [Healthcare-Agent](https://github.com/ASWINN-M/Healthcare-Agent) |
 
+## Tech stack
+
+- React 19 + Vite 7
+- Tailwind CSS v4
+- Motion (animations)
+- React Three Fiber / Drei (3D astronaut)
+- EmailJS (contact form)
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Open the URL Vite prints. With GitHub Pages base path configured, that is usually:
+
+`http://127.0.0.1:5173/Portfolio/`
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deploy (GitHub Pages)
+
+Pushes to `main` run [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+
+1. Repo **Settings → Pages → Source** = **GitHub Actions**
+2. Wait for the workflow to finish
+3. Visit https://ASWINN-M.github.io/Portfolio/
+
+`vite.config.js` sets `base: '/Portfolio/'` for project-page hosting.
+
+## Resume
+
+The navbar **Resume** button downloads [`public/Aswin_Resume.pdf`](public/Aswin_Resume.pdf).
+
+## Contact
+
+Configure EmailJS in `src/components/components/Contact.jsx` (service / template / public key).

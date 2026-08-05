@@ -3,6 +3,7 @@ import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Projects from "./sections/projects";
+import ProjectDetails from "./sections/ProjectDetails";
 import Experience from "./components/components/Experience";
 import Contact from "./components/components/Contact";
 
@@ -13,6 +14,7 @@ const App = () => {
       <Hero />
       <About />
       <Projects />
+      <ProjectDetails />
       <Experience />
       <Contact />
     </div>
