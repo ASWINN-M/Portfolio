@@ -1,65 +1,83 @@
-import React from "react";
 import { Globe } from "../components/components/Globe";
+import { asset } from "../utils/asset";
+
+const techStacks = [
+  "Python",
+  "LangGraph",
+  "LangChain",
+  "MCP",
+  "RAG",
+  "FastAPI",
+  "ChromaDB",
+  "FAISS",
+  "Ollama",
+  "OpenAI API",
+  "PaddleOCR",
+  "Scikit-Learn",
+  "Streamlit",
+  "Git",
+];
 
 const About = () => {
-  const grid2Container = React.useRef();
   return (
     <section id="about" className="c-space section-spacing">
       <h2 className="text-heading">About Me</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
-        <div className="flex items-end grid-default-color grid-1">
+        <div className="grid-default-color grid-1 flex flex-col justify-end">
           <img
-            src="assets/coding-pov.png"
+            src={asset("assets/coding-pov.png")}
             alt=""
-            className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5] "
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-[70%_center] opacity-45 md:opacity-55 scale-110"
           />
-          <div className="z-10">
-            <p className="headtext text-2xl md:text-4xl text-shadow-black">
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-indigo via-indigo/90 to-transparent"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-indigo via-indigo/80 to-transparent"
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 max-w-md p-1">
+            <p className="text-2xl md:text-4xl font-semibold text-white">
               Hi, I'm Aswin
             </p>
-            <p className="text-sm md:text-base subtext">
-              I work on AI agents and practical ML — things like RAG, OCR, and
-              tools that can take real actions. Right now I'm building The Hybrid
-              Agent, and I enjoy turning research ideas into projects you can
-              actually run.
+            <p className="mt-3 text-sm md:text-base text-neutral-200 leading-relaxed">
+              I build AI agents and practical ML systems — RAG, OCR, and tools
+              that take real actions. Right now I'm working on The Hybrid Agent,
+              turning research ideas into projects you can actually run.
             </p>
-            <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo"></div>
           </div>
         </div>
-        <div className="grid-default-color grid-2">
-          <div
-            ref={grid2Container}
-            className="flex items-center justify-center w-full h-full"
-          >
-            <div className="p-6 text-left bg-black/15 border border-white/7 rounded-lg shadow-lg">
-              <p className="text-2xl font-semibold mb-2 text-white">
-                What I've been learning
-              </p>
-              <ol className="list-decimal pl-5 space-y-2 text-white">
-                <li>
-                  Machine Learning with <b>DeepLearning.AI</b>
-                </li>
-                <li>LangChain, LangGraph, and building AI agents</li>
-                <li>
-                  Python from the <b>University of Michigan</b> (Coursera)
-                </li>
-                <li>
-                  Scikit-Learn & applied ML on <b>freeCodeCamp</b>
-                </li>
-              </ol>
-            </div>
+
+        <div className="grid-default-color grid-2 flex flex-col">
+          <p className="headtext text-white">Tech stack</p>
+          <p className="subtext mb-4">
+            Tools I use to ship agents, retrieval systems, and AI apps.
+          </p>
+          <div className="flex flex-wrap gap-2 content-start overflow-hidden">
+            {techStacks.map((tech) => (
+              <span
+                key={tech}
+                className="px-2.5 py-1 text-xs md:text-sm rounded-md bg-black/25 border border-white/10 text-neutral-100"
+              >
+                {tech}
+              </span>
+            ))}
           </div>
         </div>
+
         <div className="grid-black-color grid-3">
-          <div className="z-10 w-[50%]">
+          <div className="z-10 relative w-[55%] md:w-[50%]">
             <p className="headtext">Where I am</p>
             <p className="subtext">
-              I'm based in India and happy to work remotely with teams anywhere.
+              Based in India — open to remote work with teams anywhere.
             </p>
-            <figure className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
-              <Globe />
-            </figure>
           </div>
+          <figure className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 pointer-events-none">
+            <Globe />
+          </figure>
         </div>
       </div>
     </section>
