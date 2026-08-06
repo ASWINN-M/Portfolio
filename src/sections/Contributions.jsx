@@ -32,7 +32,7 @@ const Contributions = () => {
     <section id="contributions" className="c-space py-10 md:py-14">
       <h2 className="text-heading">Contributions</h2>
       <p className="mt-2 text-neutral-400 text-sm md:text-base max-w-2xl">
-        Code Crux core member · consistent LeetCode & NeetCode practice.
+        Code Crux core member · LeetCode & NeetCode profiles.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-3">
