@@ -42,7 +42,7 @@ const About = () => {
           <div className="relative z-10 flex h-full flex-col justify-between gap-5">
             <div className="max-w-lg">
               <p className="text-xs uppercase tracking-[0.18em] text-aqua/90">
-                AI Agent Developer · VIT-AP
+                AI Agent Developer
               </p>
               <p className="mt-2 text-2xl md:text-4xl font-semibold text-white">
                 Hi, I'm Aswin
@@ -50,8 +50,8 @@ const About = () => {
               <p className="mt-3 text-sm md:text-base text-neutral-100 leading-relaxed">
                 I build AI agents and practical ML systems — things like RAG,
                 OCR, and tools that can take real actions instead of only
-                chatting. I'm a student at VIT-AP, looking for an AI Agent /
-                AI Engineering internship where I can help ship useful systems.
+                chatting. I'm looking for an AI Agent / AI Engineering
+                internship where I can help ship useful systems.
               </p>
               <p className="mt-3 text-sm md:text-base text-neutral-200 leading-relaxed">
                 Right now I'm building The Hybrid Agent — wiring LangGraph,
