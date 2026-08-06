@@ -1,6 +1,5 @@
 import React from "react";
 import { Globe } from "../components/components/Globe";
-import { Frameworks } from "../components/components/FrameWork";
 
 const About = () => {
   const grid2Container = React.useRef();
@@ -60,18 +59,6 @@ const About = () => {
             <figure className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
               <Globe />
             </figure>
-          </div>
-        </div>
-        <div className="grid-default-color row-span-1 md:col-span-6 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200">
-          <div className="z-10 w-[50%]">
-            <p className="headtext">Tools I use</p>
-            <p className="subtext">
-              A mix of Python, ML libraries, and web tools I use to ship agents
-              and AI apps.
-            </p>
-          </div>
-          <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
-            <Frameworks />
           </div>
         </div>
       </div>

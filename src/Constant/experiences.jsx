@@ -120,7 +120,7 @@ const experiences = [
         </p>
         <ul className="list-disc pl-6 space-y-2 text-neutral-700 dark:text-neutral-300 text-sm md:text-base">
           <li>
-            Solved <b>200+</b> problems on platforms like <b>LeetCode</b>
+            Regular practice on <b>LeetCode</b> and <b>NeetCode</b>
           </li>
         </ul>
       </div>
