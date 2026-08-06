@@ -30,7 +30,7 @@ const items = [
 const Contributions = () => {
   return (
     <section id="contributions" className="c-space py-10 md:py-14">
-      <h2 className="text-heading">Practice</h2>
+      <h2 className="text-heading">Contributions</h2>
       <p className="mt-2 text-neutral-400 text-sm md:text-base max-w-2xl">
         Code Crux core member · consistent LeetCode & NeetCode practice.
       </p>
