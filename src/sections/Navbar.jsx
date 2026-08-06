@@ -53,8 +53,8 @@ function Navigation({ onNavigate }) {
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#project-details" onClick={onNavigate}>
-          Details
+        <a className="nav-link" href="#contributions" onClick={onNavigate}>
+          Practice
         </a>
       </li>
       <li className="nav-li">

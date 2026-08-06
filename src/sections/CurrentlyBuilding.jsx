@@ -76,10 +76,10 @@ const CurrentlyBuilding = () => {
               See all projects
             </a>
             <a
-              href="#project-details"
+              href="#contributions"
               className="inline-flex px-4 py-2 rounded-md border border-white/15 text-neutral-200 hover:border-aqua hover:text-aqua transition-colors"
             >
-              Read the deep dive
+              See DSA practice
             </a>
           </div>
         </motion.div>

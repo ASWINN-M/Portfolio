@@ -1,6 +1,5 @@
 import React from "react";
 import { Globe } from "../components/components/Globe";
-import CopyEmailButton from "../components/components/CopyEmailButton";
 import { Frameworks } from "../components/components/FrameWork";
 
 const About = () => {
@@ -63,15 +62,7 @@ const About = () => {
             </figure>
           </div>
         </div>
-        <div className="grid-special-color grid-4">
-          <div className="flex flex-col items-center justify-center gap-4 size-full">
-            <p className="text-center headtext">
-              Want to build something with AI together?
-            </p>
-            <CopyEmailButton />
-          </div>
-        </div>
-        <div className="grid-default-color grid-5">
+        <div className="grid-default-color row-span-1 md:col-span-6 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200">
           <div className="z-10 w-[50%]">
             <p className="headtext">Tools I use</p>
             <p className="subtext">
