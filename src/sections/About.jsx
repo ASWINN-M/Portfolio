@@ -23,31 +23,66 @@ const About = () => {
     <section id="about" className="c-space section-spacing">
       <h2 className="text-heading">About Me</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
-        <div className="grid-default-color grid-1 flex flex-col justify-end">
+        <div className="grid-default-color grid-1 flex flex-col">
           <img
             src={asset("assets/coding-pov.png")}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover object-[70%_center] opacity-45 md:opacity-55 scale-110"
+            className="absolute inset-0 w-full h-full object-cover object-[68%_center] opacity-70 md:opacity-80"
           />
           <div
-            className="absolute inset-0 bg-gradient-to-r from-indigo via-indigo/90 to-transparent"
+            className="absolute inset-0 bg-gradient-to-r from-indigo/95 via-indigo/75 to-indigo/25"
             aria-hidden="true"
           />
           <div
-            className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-indigo via-indigo/80 to-transparent"
+            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-indigo/95 via-indigo/50 to-transparent"
             aria-hidden="true"
           />
 
-          <div className="relative z-10 max-w-md p-1">
-            <p className="text-2xl md:text-4xl font-semibold text-white">
-              Hi, I'm Aswin
-            </p>
-            <p className="mt-3 text-sm md:text-base text-neutral-200 leading-relaxed">
-              I build AI agents and practical ML systems — RAG, OCR, and tools
-              that take real actions. Right now I'm working on The Hybrid Agent,
-              turning research ideas into projects you can actually run.
-            </p>
+          <div className="relative z-10 flex h-full flex-col justify-between gap-5">
+            <div className="max-w-lg">
+              <p className="text-xs uppercase tracking-[0.18em] text-aqua/90">
+                AI Agent Developer · VIT-AP
+              </p>
+              <p className="mt-2 text-2xl md:text-4xl font-semibold text-white">
+                Hi, I'm Aswin
+              </p>
+              <p className="mt-3 text-sm md:text-base text-neutral-100 leading-relaxed">
+                I build AI agents and practical ML systems — things like RAG,
+                OCR, and tools that can take real actions instead of only
+                chatting. I'm a student at VIT-AP, looking for an AI Agent /
+                AI Engineering internship where I can help ship useful systems.
+              </p>
+              <p className="mt-3 text-sm md:text-base text-neutral-200 leading-relaxed">
+                Right now I'm building The Hybrid Agent — wiring LangGraph,
+                tool use (MCP), memory, and optional voice into one assistant I
+                can actually run end to end.
+              </p>
+            </div>
+
+            <div className="max-w-lg">
+              <p className="text-xs uppercase tracking-wider text-neutral-300 mb-2">
+                What I focus on
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-sm text-neutral-100">
+                <li className="flex gap-2">
+                  <span className="text-aqua">▸</span>
+                  LangGraph agents &amp; MCP tools
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-aqua">▸</span>
+                  RAG over real documents
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-aqua">▸</span>
+                  Multilingual OCR + NLP
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-aqua">▸</span>
+                  Applied ML apps that run
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
