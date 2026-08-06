@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "motion/react";
 
 const BOOT_LINES = [
   "Initializing agent runtime…",
@@ -17,13 +17,26 @@ const CRITICAL_ASSETS = [
 const assetUrl = (path) =>
   `${import.meta.env.BASE_URL}${String(path).replace(/^\/+/, "")}`;
 
+const easeInOutCubic = (t) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
 const PageLoader = ({ onFinished }) => {
-  const [progress, setProgress] = useState(0);
   const [lineIndex, setLineIndex] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [displayPct, setDisplayPct] = useState(0);
   const finishedRef = useRef(false);
   const assetsDoneRef = useRef(false);
   const windowLoadedRef = useRef(false);
+  const targetRef = useRef(0);
+  const completingRef = useRef(false);
+
+  const progressMV = useMotionValue(0);
+  const smoothProgress = useSpring(progressMV, {
+    stiffness: 48,
+    damping: 22,
+    mass: 0.9,
+  });
+  const barScale = useTransform(smoothProgress, [0, 100], [0, 1]);
 
   const nodes = useMemo(
     () =>
@@ -42,52 +55,74 @@ const PageLoader = ({ onFinished }) => {
   }, []);
 
   useEffect(() => {
+    const unsub = smoothProgress.on("change", (v) => {
+      setDisplayPct(Math.round(v));
+    });
+    return unsub;
+  }, [smoothProgress]);
+
+  useEffect(() => {
     const startedAt = performance.now();
-    const MIN_MS = 2800;
+    const MIN_MS = 3000;
     let cancelled = false;
     let loadedCount = 0;
     const totalAssets = CRITICAL_ASSETS.length;
+    let rafId = 0;
+
+    const finishSequence = () => {
+      if (cancelled || finishedRef.current) return;
+      finishedRef.current = true;
+      targetRef.current = 100;
+      progressMV.set(100);
+      setLineIndex(BOOT_LINES.length - 1);
+
+      window.setTimeout(() => {
+        if (!cancelled) setVisible(false);
+      }, 550);
+
+      window.setTimeout(() => {
+        if (!cancelled) onFinished?.();
+      }, 1100);
+    };
 
     const tryFinish = async () => {
-      if (cancelled || finishedRef.current) return;
+      if (cancelled || completingRef.current || finishedRef.current) return;
       if (!assetsDoneRef.current && !windowLoadedRef.current) return;
 
+      completingRef.current = true;
       const elapsed = performance.now() - startedAt;
       if (elapsed < MIN_MS) {
         await new Promise((r) => setTimeout(r, MIN_MS - elapsed));
       }
       if (cancelled || finishedRef.current) return;
-
-      finishedRef.current = true;
-      setProgress(100);
-      setLineIndex(BOOT_LINES.length - 1);
-
-      window.setTimeout(() => {
-        if (cancelled) return;
-        setVisible(false);
-      }, 450);
-
-      window.setTimeout(() => {
-        if (!cancelled) onFinished?.();
-      }, 1000);
+      finishSequence();
     };
 
-    const progressTimer = window.setInterval(() => {
-      if (finishedRef.current) return;
-      setProgress((prev) => {
-        if (prev >= 94) return prev;
-        const step = prev < 65 ? 1.6 : prev < 85 ? 0.55 : 0.18;
-        return Math.min(prev + step, 94);
-      });
-    }, 40);
+    const tick = (now) => {
+      if (cancelled || finishedRef.current) return;
+
+      const elapsed = now - startedAt;
+      // Smooth ease toward ~92% over MIN_MS, never stall visually
+      const timed = easeInOutCubic(Math.min(elapsed / MIN_MS, 1)) * 92;
+      targetRef.current = Math.max(targetRef.current, timed);
+
+      const current = progressMV.get();
+      const next = current + (targetRef.current - current) * 0.085;
+      progressMV.set(next);
+
+      rafId = window.requestAnimationFrame(tick);
+    };
+    rafId = window.requestAnimationFrame(tick);
 
     const lineTimer = window.setInterval(() => {
       if (finishedRef.current) return;
       setLineIndex((i) => Math.min(i + 1, BOOT_LINES.length - 2));
-    }, 520);
+    }, 560);
 
     const onAsset = () => {
       loadedCount += 1;
+      // bump target gently as assets land
+      targetRef.current = Math.min(92, targetRef.current + 8);
       if (loadedCount >= totalAssets) {
         assetsDoneRef.current = true;
         tryFinish();
@@ -110,11 +145,10 @@ const PageLoader = ({ onFinished }) => {
 
     const onWindowLoad = () => {
       windowLoadedRef.current = true;
-      // Finish even if one asset HEAD/fetch stalls.
       window.setTimeout(() => {
         assetsDoneRef.current = true;
         tryFinish();
-      }, 900);
+      }, 700);
     };
 
     if (document.readyState === "complete") onWindowLoad();
@@ -124,18 +158,16 @@ const PageLoader = ({ onFinished }) => {
       assetsDoneRef.current = true;
       windowLoadedRef.current = true;
       tryFinish();
-    }, 7500);
+    }, 8000);
 
     return () => {
       cancelled = true;
-      window.clearInterval(progressTimer);
+      window.cancelAnimationFrame(rafId);
       window.clearInterval(lineTimer);
       window.clearTimeout(safety);
       window.removeEventListener("load", onWindowLoad);
     };
-  }, [onFinished]);
-
-  const shownProgress = Math.round(progress);
+  }, [onFinished, progressMV]);
 
   return (
     <AnimatePresence>
@@ -228,13 +260,12 @@ const PageLoader = ({ onFinished }) => {
             <div className="mt-8 w-full">
               <div className="mb-2 flex items-center justify-between text-xs text-neutral-400">
                 <span>System load</span>
-                <span className="tabular-nums text-aqua">{shownProgress}%</span>
+                <span className="tabular-nums text-aqua">{displayPct}%</span>
               </div>
               <div className="h-1.5 w-full overflow-hidden rounded-full bg-storm">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-aqua via-mint to-aqua"
-                  animate={{ width: `${shownProgress}%` }}
-                  transition={{ ease: "easeOut", duration: 0.2 }}
+                  className="h-full w-full origin-left rounded-full bg-gradient-to-r from-aqua via-mint to-aqua will-change-transform"
+                  style={{ scaleX: barScale }}
                 />
               </div>
             </div>
