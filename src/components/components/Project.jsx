@@ -1,6 +1,19 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { asset } from "../../utils/asset";
+
+const githubOpenGraph = (href) => {
+  if (!href) return null;
+  try {
+    const url = new URL(href);
+    if (!url.hostname.includes("github.com")) return null;
+    const [, owner, repo] = url.pathname.split("/");
+    if (!owner || !repo) return null;
+    return `https://opengraph.githubassets.com/1/${owner}/${repo}`;
+  } catch {
+    return null;
+  }
+};
 
 const Project = ({
   title = "Default Project",
@@ -11,7 +24,11 @@ const Project = ({
   tags = [],
   status = null,
 }) => {
-  const [isHidden, setIsHidden] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const hasRepo = Boolean(href && href !== "#");
+  const ogImage = useMemo(() => githubOpenGraph(href), [href]);
+  const previewSrc = ogImage || image;
 
   return (
     <>
@@ -21,6 +38,8 @@ const Project = ({
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
         viewport={{ once: true, margin: "-40px" }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
         <div>
           <div className="flex items-center gap-3 flex-wrap">
@@ -44,25 +63,71 @@ const Project = ({
           </div>
         </div>
 
-        <button
-          onClick={() => setIsHidden(true)}
-          className="flex items-center gap-1 cursor-pointer text-white transition-colors hover:text-aqua"
-        >
-          Read More
-          <img src="assets/arrow-right.svg" className="w-5" alt="arrow" />
-        </button>
+        {hasRepo ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 cursor-pointer text-white transition-colors hover:text-aqua"
+          >
+            GitHub Link
+            <img src="assets/arrow-up.svg" className="w-4" alt="" />
+          </a>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setShowDetails(true)}
+            className="flex items-center gap-1 cursor-pointer text-white transition-colors hover:text-aqua"
+          >
+            View notes
+            <img src="assets/arrow-right.svg" className="w-5" alt="" />
+          </button>
+        )}
+
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              className="hidden md:block pointer-events-none absolute z-30 right-28 lg:right-36 top-1/2 -translate-y-1/2 w-[20rem] max-w-[42vw]"
+              initial={{ opacity: 0, x: 16, scale: 0.96 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 12, scale: 0.96 }}
+              transition={{ duration: 0.18 }}
+            >
+              <div className="rounded-xl border border-white/15 bg-midnight/95 shadow-2xl overflow-hidden backdrop-blur-sm">
+                <div className="flex items-center gap-2 px-3 py-2 border-b border-white/10 bg-black/30">
+                  <img
+                    src={asset("assets/logos/github.svg")}
+                    alt=""
+                    className="w-4 h-4 opacity-80"
+                  />
+                  <span className="text-xs text-neutral-300 truncate">
+                    {hasRepo
+                      ? href.replace("https://github.com/", "")
+                      : title}
+                  </span>
+                </div>
+                <img
+                  src={previewSrc}
+                  alt={`${title} GitHub preview`}
+                  className="w-full aspect-[2/1] object-cover bg-storm"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent h-[1px] w-full" />
 
       <AnimatePresence>
-        {isHidden && (
+        {showDetails && (
           <motion.div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setIsHidden(false)}
+            onClick={() => setShowDetails(false)}
           >
             <motion.div
               className="relative max-w-2xl mx-4 bg-midnight border border-white/10 rounded-2xl overflow-hidden"
@@ -73,7 +138,7 @@ const Project = ({
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                onClick={() => setIsHidden(false)}
+                onClick={() => setShowDetails(false)}
                 className="absolute top-4 right-4 z-10 p-2 bg-black/50 rounded-full transition-colors hover:bg-black/80"
               >
                 <img src="assets/close.svg" className="w-6 h-6" alt="close" />
@@ -121,29 +186,13 @@ const Project = ({
                     ))}
                   </div>
 
-                  {href && href !== "#" ? (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-aqua transition-colors hover:text-mint"
-                    >
-                      View Project
-                      <img
-                        src="assets/arrow-up.svg"
-                        className="w-4 h-4"
-                        alt="external"
-                      />
-                    </a>
-                  ) : (
-                    <a
-                      href="#currently-building"
-                      className="flex items-center gap-2 text-aqua transition-colors hover:text-mint"
-                      onClick={() => setIsHidden(false)}
-                    >
-                      See current build notes
-                    </a>
-                  )}
+                  <a
+                    href="#currently-building"
+                    className="flex items-center gap-2 text-aqua transition-colors hover:text-mint"
+                    onClick={() => setShowDetails(false)}
+                  >
+                    See current build notes
+                  </a>
                 </div>
               </div>
             </motion.div>
