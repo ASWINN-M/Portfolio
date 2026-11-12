@@ -41,15 +41,16 @@ export const FlipWords = ({
         }}
         transition={{
           type: "spring",
-          stiffness: 100,
-          damping: 10,
+          stiffness: 140,
+          damping: 14,
+          mass: 0.8,
         }}
         exit={{
           opacity: 0,
-          y: -40,
-          x: 40,
-          filter: "blur(8px)",
-          scale: 2,
+          y: -28,
+          x: 18,
+          filter: "blur(10px)",
+          scale: 1.35,
           position: "absolute",
         }}
         className={twMerge(

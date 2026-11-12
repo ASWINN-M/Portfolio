@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 420" role="img" aria-label="AI profile banner">
+  <defs>
+    <linearGradient id="ban" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030412"/>
+      <stop offset="45%" stop-color="#0d1f33"/>
+      <stop offset="100%" stop-color="#12383f"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="70%" cy="40%" r="45%">
+      <stop offset="0%" stop-color="#33c2cc" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#33c2cc" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="420" fill="url(#ban)"/>
+  <rect width="1600" height="420" fill="url(#spot)"/>
+  <g stroke="#33c2cc" stroke-width="1.2" opacity="0.35" fill="none">
+    <path d="M80 320 C220 180, 360 360, 520 220 S820 80, 980 200 S1280 360, 1520 160"/>
+    <path d="M60 180 C240 260, 400 80, 600 160 S980 300, 1200 140 S1480 240, 1580 100"/>
+  </g>
+  <g fill="#57db96">
+    <circle cx="220" cy="210" r="5" opacity="0.9"/>
+    <circle cx="520" cy="220" r="6" opacity="0.85"/>
+    <circle cx="820" cy="140" r="5" opacity="0.8"/>
+    <circle cx="1100" cy="250" r="7" opacity="0.9"/>
+    <circle cx="1380" cy="170" r="5" opacity="0.85"/>
+  </g>
+  <g fill="#33c2cc">
+    <circle cx="360" cy="300" r="4"/>
+    <circle cx="700" cy="260" r="4"/>
+    <circle cx="980" cy="200" r="5"/>
+    <circle cx="1260" cy="120" r="4"/>
+  </g>
+  <text x="80" y="100" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700" fill="#e8fbff">AI Agent Developer</text>
+  <text x="80" y="150" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#9fd8df">LangGraph · RAG · OCR · MCP</text>
+</svg>

@@ -5,6 +5,7 @@ import About from "./sections/About";
 import CurrentlyBuilding from "./sections/CurrentlyBuilding";
 import Projects from "./sections/projects";
 import Contributions from "./sections/Contributions";
+import GitActivity from "./sections/GitActivity";
 import Experience from "./components/components/Experience";
 import Contact from "./components/components/Contact";
 import PageLoader from "./components/components/PageLoader";
@@ -27,6 +28,7 @@ const App = () => {
         <About />
         <CurrentlyBuilding />
         <Projects />
+        <GitActivity />
         <Contributions />
         <Experience />
         <Contact />

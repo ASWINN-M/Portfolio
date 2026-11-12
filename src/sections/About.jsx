@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { Globe } from "../components/components/Globe";
 import { asset } from "../utils/asset";
 
@@ -22,7 +23,22 @@ const About = () => {
   return (
     <section id="about" className="c-space section-spacing">
       <h2 className="text-heading">About Me</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
+
+      <motion.div
+        className="mt-8 overflow-hidden rounded-2xl border border-white/10"
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.55 }}
+      >
+        <img
+          src={asset("assets/ai/ai-banner.svg")}
+          alt="AI Agent Developer banner — LangGraph, RAG, OCR, MCP"
+          className="w-full h-auto object-cover"
+        />
+      </motion.div>
+
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-6">
         <div className="grid-default-color grid-1 flex flex-col">
           <img
             src={asset("assets/coding-pov.png")}
@@ -92,13 +108,18 @@ const About = () => {
             Tools I use to ship agents, retrieval systems, and AI apps.
           </p>
           <div className="flex flex-wrap gap-2 content-start overflow-hidden">
-            {techStacks.map((tech) => (
-              <span
+            {techStacks.map((tech, i) => (
+              <motion.span
                 key={tech}
                 className="px-2.5 py-1 text-xs md:text-sm rounded-md bg-black/25 border border-white/10 text-neutral-100"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.03, duration: 0.3 }}
+                whileHover={{ borderColor: "rgba(51,194,204,0.55)", y: -2 }}
               >
                 {tech}
-              </span>
+              </motion.span>
             ))}
           </div>
         </div>
@@ -114,6 +135,37 @@ const About = () => {
             <Globe />
           </figure>
         </div>
+      </div>
+
+      <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <motion.div
+          className="overflow-hidden rounded-2xl border border-white/10 bg-navy/40"
+          initial={{ opacity: 0, x: -16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ scale: 1.01 }}
+        >
+          <img
+            src={asset("assets/ai/ai-agent.svg")}
+            alt="AI agent network illustration"
+            className="w-full h-auto"
+          />
+        </motion.div>
+        <motion.div
+          className="overflow-hidden rounded-2xl border border-white/10 bg-navy/40"
+          initial={{ opacity: 0, x: 16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.08 }}
+          whileHover={{ scale: 1.01 }}
+        >
+          <img
+            src={asset("assets/ai/ai-rag.svg")}
+            alt="RAG document intelligence illustration"
+            className="w-full h-auto"
+          />
+        </motion.div>
       </div>
     </section>
   );

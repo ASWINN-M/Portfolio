@@ -43,8 +43,9 @@ const HeroText = () => {
             transition={{ delay: 1.5 }}
           >
             <FlipWords
-              words={["Agents", "RAG apps", "LLM tools"]}
-              className="font-black text-8xl text-white"
+              words={["Agents", "RAG apps", "OCR pipelines", "MCP tools"]}
+              duration={2600}
+              className="font-black text-7xl xl:text-8xl text-white"
             />
           </motion.div>
           <motion.p
@@ -107,7 +108,8 @@ const HeroText = () => {
             transition={{ delay: 1.5 }}
           >
             <FlipWords
-              words={["Agents", "RAG apps", "LLM tools"]}
+              words={["Agents", "RAG apps", "OCR pipelines", "MCP tools"]}
+              duration={2600}
               className="font-black text-4xl text-neutral-300"
             />
           </motion.div>
