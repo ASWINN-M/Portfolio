@@ -189,7 +189,7 @@ const PageLoader = ({ onFinished }) => {
               <motion.div
                 className="absolute inset-0"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               >
                 {nodes.map((node) => (
                   <span
@@ -205,7 +205,7 @@ const PageLoader = ({ onFinished }) => {
               <motion.div
                 className="absolute inset-0"
                 animate={{ rotate: -360 }}
-                transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "linear" }}
               >
                 {[0, 120, 240].map((angle) => (
                   <span
